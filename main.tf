@@ -15,3 +15,21 @@ resource "terraform_data" "hello" {
 output "message" {
   value = terraform_data.hello.input
 }
+
+module "greet_anna" {
+  source = "./modules/greeting"
+  name   = "Anny"
+}
+
+module "greet_boris" {
+  source = "./modules/greeting"
+  name   = "Boris"
+}
+
+output "anna_text" {
+  value = module.greet_anna.text
+}
+
+output "boris_text" {
+  value = module.greet_boris.text
+}
