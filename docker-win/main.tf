@@ -9,22 +9,22 @@ terraform {
 
 provider "docker" {}
 
-module "web_dev" {
-  source = "./modules/web"
-  name   = "dev"
-  port   = 8090
+locals {
+  sites = {
+    dev   = 8090
+    stage = 8091
+    prod  = 8092
+  }
 }
 
-module "web_stage" {
-  source = "./modules/web"
-  name   = "stage"
-  port   = 8093
+module "web" {
+  source   = "./modules/web"
+  for_each = local.sites
+
+  name = each.key
+  port = each.value
 }
 
-output "dev_url" {
-  value = module.web_dev.url
-}
-
-output "stage_url" {
-  value = module.web_stage.url
+output "urls" {
+  value = { for k, m in module.web : k => m.url }
 }
