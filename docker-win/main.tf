@@ -28,3 +28,7 @@ module "web" {
 output "urls" {
   value = { for k, m in module.web : k => m.url }
 }
+
+output "non_dev_urls" {
+  value = { for k, m in module.web : k => m.url if k != "dev" }
+}
