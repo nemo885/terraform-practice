@@ -20,7 +20,7 @@ output "admins" {
 }
 
 output "roles_count" {
-  value = length(local.user)
+  value = length(local.users)
 }
 
 output "infos" {
