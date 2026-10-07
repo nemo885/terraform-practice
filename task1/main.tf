@@ -1,6 +1,6 @@
 locals {
   users = {
-    anna   ="admin"
+    anna   = "admin"
     boris  = "dev"
     clara  = "dev"
     dmitry = "admin"
