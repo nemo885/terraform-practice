@@ -5,3 +5,7 @@
 crash.log
 hello.txt
 secrets-test/
+# OpenTofu
+*.tfstate*
+.terraform/
+*.tfvars
