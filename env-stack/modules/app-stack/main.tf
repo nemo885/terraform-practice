@@ -14,12 +14,12 @@ resource "docker_network" "net" {
 
 resource "docker_image" "postgres" {
     name = "postgres:${var.postgres_version}"
-    
+    keep_locally = true
 }
 
 resource "docker_image" "nginx" {
     name = "nginx:alpine"
-  
+    keep_locally = true
 }
 
 
